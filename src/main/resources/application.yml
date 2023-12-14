@@ -1,0 +1,19 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          # provider name used for registration
+          demo-provider:
+            # Keycloak realm URL: "{keycloak-url}/realms/{realm-name}"
+            issuer-uri: http://localhost:8081/realms/demo-realm
+        registration:
+          # client-id from Keycloak client configuration
+          demo-client:
+            # provider from above
+            provider: demo-provider
+            # client-id from Keycloak client configuration
+            client-id: demo-client
+            scope: openid
+            # default redirect URI: "{baseUrl}/login/oauth2/code/{registrationId}"
+            redirect-uri: http://localhost:8080/login/oauth2/code/demo-client
